@@ -1,0 +1,10 @@
+#PBS -N DaskMultiNodeJob
+#PBS -l select=4:ncpus=1:mem=6gb:interconnect=any,walltime=0:30:00
+#PBS -o output.txt
+#PBS -e stderr.txt
+
+cd $PBS_O_WORKDIR
+
+module load anaconda3/2019.10-gcc/8.3.1
+python dask_test.py
+

@@ -1,0 +1,11 @@
+#PBS -N TensorFlowJob
+#PBS -l select=1:ncpus=24:mem=60gb:ngpus=1:gpu_model=any:interconnect=any,walltime=0:30:00
+#PBS -o output.txt
+#PBS -e stderr.txt
+
+module load anaconda3/2019.10-gcc/8.3.1 cuda/11.0.3-gcc/7.5.0 cudnn/8.0.0.180-11.0-linux-x64-gcc/7.5.0
+source ~/software/venv/tf_gpu/bin/activate
+
+cd $PBS_O_WORKDIR 
+
+python ./TensorFlow2Test.py | tee gpu_check.txt
